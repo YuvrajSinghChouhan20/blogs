@@ -1,0 +1,16 @@
+<%= form_with(model: resource, url: resource, class: "form row g-3") do |form| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="col-md-12">
+    <%= form.label :title, class: "form-label" %><br />
+    <%= form.text_field :title, class: "form-control"  %>
+  </div>
+
+  <div class="col-md-12">
+    <%= form.label :boody, class: "form-label" %>
+    <%= form.text_area :body, class: "form-control", rows: 10 %>
+  </div>
+
+  <div class="col-md-12 mb-3">
+    <%= form.submit "Create", class: "btn btn-lg btn-dark" %>
+  </div>
+<% end %>

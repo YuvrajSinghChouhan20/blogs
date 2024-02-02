@@ -1,0 +1,23 @@
+<div class="container">
+    <h1 class="my-2">
+      All Articles
+    </h1>
+  <div class="row my-2 mt-4">
+    <% if @articles.any? %>
+      <% @articles.each do |article|%>
+        <div class="card mb-2">
+          <div class="card-body">
+            <h2 class="card-title"><%= article.title %></h2>
+            <p class="card-text"><%= "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa ad commodi perspiciatis numquam officiis ipsum unde, ea quam nesciunt et necessitatibus expedita quibusdam adipisci eum beatae, vel est accusamus facilis eius ab fugit. Totam porro numquam qui provident minus alias optio eius libero eum beatae quas officia, et magni veniam.".truncate(80)%></p>
+            <%= link_to "Read more", article_path(article), class: "btn btn-dark"%>
+          </div>
+        </div>
+      <%end%>
+    <%else%>
+      <h2 class="my-3">No Article Found</h2>
+      <span>
+        <%= link_to "Publish New Article", new_article_path, class: "btn btn-dark" if current_user%>
+      </span>
+    <%end%>
+  </div>
+</div>

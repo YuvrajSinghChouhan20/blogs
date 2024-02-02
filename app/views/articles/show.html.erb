@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row my-5">
+    <% if @article.nil? %>
+      <div class="col-md-5 mx-auto my-5">
+        <h1>404 No Record Found</h1>
+        <%= link_to "back", :back %>
+      </div>
+    <%else%>
+      <%= link_to "Back", :back %>
+      <div class="col-md-12">
+        <div class="h2 mb-4 mt-3">
+          <%= @article.title %>
+        </div>
+        <p class="mt-2">
+          <%= @article.body %>
+        </p>
+        <%if @article.author?(current_user)%>
+          <%= link_to "Edit", edit_article_path(@article), class: "btn btn-dark"%>
+          <%= link_to "Delete", edit_article_path(@article), class: "btn btn-danger"%>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+</div>
