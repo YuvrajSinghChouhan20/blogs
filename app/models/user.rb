@@ -1,16 +1,18 @@
-class User < ApplicationRecord
+# frozen_string_literal: true
+
+class User < ApplicationRecord # rubocop:disable Style/Documentation
   rolify
 
   before_create :set_role
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  has_many :articles, after_add: :set_author, dependent: :destroy
+  has_many :articles, after_add: :add_author, dependent: :destroy
 
   private
 
-  def set_author(article)
-    add_role :author, @article
+  def add_author(article)
+    add_role :author, article
   end
 
   def set_role

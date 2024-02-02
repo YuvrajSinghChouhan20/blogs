@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
-  permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :name, :password, :confirm_password, role_ids: []
+  permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at,
+                :name, :password, :confirm_password, role_ids: []
 
   index do
     selectable_column
@@ -21,7 +24,7 @@ ActiveAdmin.register User do
   filter :roles
 
   form do |f|
-    f.inputs "User Details" do
+    f.inputs 'User Details' do
       f.input :name
       f.input :email
       f.input :password

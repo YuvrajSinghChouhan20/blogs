@@ -1,11 +1,11 @@
-class ApplicationRecord < ActiveRecord::Base
-  primary_abstract_class
+# frozen_string_literal: true
 
-  def self.ransackable_attributes(auth_object = nil)
+class ApplicationRecord < ActiveRecord::Base
+  def self.ransackable_attributes(_auth_object = nil)
     authorizable_ransackable_attributes
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     authorizable_ransackable_associations
   end
 end

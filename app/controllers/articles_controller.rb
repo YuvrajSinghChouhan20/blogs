@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_article, only: [:show, :edit, :destroy, :update]
+  before_action :set_article, only: %i[show edit destroy update]
   authorize_resource
 
   def index
@@ -14,7 +16,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.create(article_params)
     if(@article.save)
-      redirect_to @article, notice: "Article created Succesfully"
+      redirect_to @article, notice: 'Article created Succesfully'
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,14 +24,13 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to @article,  notice: "Article Updated Succesfully"
+      redirect_to @article,  notice: 'Article Updated Succesfully'
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
     @article.destroy
