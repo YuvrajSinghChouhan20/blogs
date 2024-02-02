@@ -5,9 +5,10 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  has_many :articles, after_add: :set_author
+  has_many :articles, after_add: :set_author, dependent: :destroy
 
   private
+
   def set_author(article)
     add_role :author, @article
   end

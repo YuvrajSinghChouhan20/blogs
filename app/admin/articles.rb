@@ -13,11 +13,12 @@ ActiveAdmin.register Article do
     column :created_at
     actions
   end
+
   form do |f|
     f.inputs "Article Details" do
       f.input :title
       f.input :body
-      f.input :user, heading: false, new_record: false do |a|
+      f.input :user, heading: false,allow_destroy: true, new_record: false do |a|
         a.input :user
       end
     end
